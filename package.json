@@ -1,0 +1,29 @@
+{
+  "name": "doc-sync",
+  "version": "1.0.0",
+  "description": "A document synchronization module which relies upon the Patience Diff algorithm",
+  "main": "doc-sync.js",
+  "type": "module",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "node ./test/test.js"
+  },
+  "imports": {
+    "#DocSync": "./doc-sync.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wikitopian/doc-sync.git"
+  },
+  "keywords": [
+    "diff"
+  ],
+  "author": "wikitopian",
+  "license": "Unlicense",
+  "bugs": {
+    "url": "https://github.com/wikitopian/doc-sync/issues"
+  },
+  "homepage": "https://github.com/wikitopian/doc-sync#readme"
+}

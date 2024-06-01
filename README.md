@@ -1,4 +1,8 @@
-# PatienceDiff  &  PatienceDiffPlus
+# doc-sync
+
+A document synchronization module which relies upon the Patience Diff algorithm
+
+## PatienceDiff  &  PatienceDiffPlus
 A concise javascript implementation of the **Patience Diff** algorithm
 
 Plus, an implementation of a new algorithm dubbed **Patience Diff Plus**, which in addition to the usual Patience Diff, identifies lines that moved.
@@ -23,9 +27,6 @@ where:<br>
   * lineCountMoved = the number of lines, outside the Longest Common Subsequence, that were likely moved.
 
 # Example
-Simply download the PatienceDiff.js file which contains the complete algorithm, and PatienceDiff.html which exemplifies how to use the algorithm.  Then open PatienceDiff.html in a browser, and press the "=> Diff =>" button to calculate the difference between the two blocks of text.
-
-![Results of javascript Patience Diff](PatienceDiff.png)
 
 # Explanation of the Patience Diff Plus Algorithm
 The PatienceDiffPlus algorithm is a new algorithm that extends the PatienceDiff algorithm, to include the *likely* lines that moved.  The algorithm is elegantly straightforward.  PatienceDiffPlus takes the original lines deleted from aLines[] along with the lines inserted into bLines[], and runs these residual subset of lines through the PatienceDiff algorithm.  If any lines match in this subset, then they are *assumed* to have moved rather than being independent deletions and insertions.  The results of the initial PatienceDiff algorithm are then adjusted to record the likely moves.  This is repeated, with any remaining deletions and insertions again run through the PatienceDiff algorithm, until no more matches are found.

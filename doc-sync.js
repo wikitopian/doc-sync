@@ -1,3 +1,25 @@
+export default class DocSync {
+  constructor(oldDoc) {
+    this.oldDoc = oldDoc;
+  }
+
+  static getPatch(oldDoc, newDoc) {
+    return "getPatched";
+  }
+
+  getPatch(newDoc) {
+    return DocSync.getPatch(this.oldDoc, newDoc);
+  }
+
+  static setPatch(oldDoc, patch) {
+    return "setPatched";
+  }
+
+  setPatch(patch) {
+    return DocSync.setPatch(this.oldDoc, patch);
+  }
+}
+
 /**
  * program: "patienceDiff" algorithm implemented in javascript.
  * author: Jonathan Trent
