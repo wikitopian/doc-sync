@@ -4,7 +4,15 @@ export default class DocSync {
   }
 
   static getPatch(oldDoc, newDoc) {
-    return "getPatched";
+    const diff = patienceDiffPlus(oldDoc.split("\n"), newDoc.split("\n"));
+
+    return diff.lines.map((line) => {
+      if (line.aIndex === line.bIndex) return null;
+      if (line.bIndex === -1) return null;
+      if (line.aIndex >= 0) line.line = null;
+
+      return line;
+    }).filter((line) => line !== null);
   }
 
   getPatch(newDoc) {
@@ -12,7 +20,19 @@ export default class DocSync {
   }
 
   static setPatch(oldDoc, patch) {
-    return "setPatched";
+    const old = oldDoc.split("\n");
+    const patched = [...old];
+
+    patch.forEach((change) => {
+      if (change.line === null) {
+        delete patched[change.bIndex];
+        return;
+      }
+
+      patched[change.bIndex] = change.line;
+    });
+
+    return patched.join("\n");
   }
 
   setPatch(patch) {
