@@ -8,8 +8,6 @@ export default class DocSync {
 
     return diff.lines.map((line) => {
       if (line.aIndex === line.bIndex) return null;
-      if (line.bIndex === -1) return null;
-      if (line.aIndex >= 0) line.line = null;
 
       return line;
     }).filter((line) => line !== null);
@@ -24,15 +22,19 @@ export default class DocSync {
     const patched = [...old];
 
     patch.forEach((change) => {
-      if (change.line === null) {
-        delete patched[change.bIndex];
+      if (change.bIndex === -1) {
+        patched.pop(change.aIndex);
         return;
       }
 
       patched[change.bIndex] = change.line;
     });
 
-    return patched.join("\n");
+    // fix bug with final newline of string
+    let patchedFixed = patched.join("\n");
+    if (patchedFixed.slice(-1) !== "\n") patchedFixed = patchedFixed + "\n";
+
+    return patchedFixed;
   }
 
   setPatch(patch) {

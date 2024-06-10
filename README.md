@@ -2,6 +2,17 @@
 
 A document synchronization module which relies upon the Patience Diff algorithm
 
+## Purpose
+
+Rely on the pre-existing PDiff algorithm to create a simple and small diff for
+both the client and server sides of my document web app to describe changes.
+
+## To Do
+
+* Minify / Uglify
+* NPM deploy
+* Concisely record shifting chunk ranges
+
 ## PatienceDiff  &  PatienceDiffPlus
 A concise javascript implementation of the **Patience Diff** algorithm
 
